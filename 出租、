@@ -1,0 +1,100 @@
+//出租
+#include<stdio.h>
+int main()
+{
+	int arr[12] = { 0 };
+	char brr[12];
+	int c;
+	int crr[11];
+	scanf("%s", &brr);
+	for (int i = 0; i < 12; i++)
+	{
+		c = (int)brr[i]-48;
+		arr[c]++;
+	}
+	int n = 0;
+	for (int k = 11; k >= 0; k--)
+	{
+		if (arr[k] != 0)
+		{
+			if (n == 0)
+			{
+				printf("int[] arr = new int[]{%d", k);
+				crr[n] = k;
+			}
+			else
+			{
+				printf(",%d", k);
+				crr[n] = k;
+			}
+			n++;
+		}
+	}
+	printf("};\n");
+	int num=0;
+	for (int i = 0; i < 12; i++)
+	{
+		c = (int)brr[i] - 48;
+		for (int a = 0; a <=n; a++)
+		{
+			if (crr[a] == c)
+			{
+				num++;
+				if (num == 1)
+				{
+					printf("int[] index = new int[]{%d", a);
+					break;
+				}
+				else
+				{
+					printf(",%d", a);
+					break;
+				}
+			}
+		}
+	}
+	printf("};");
+}
+//一帮一
+#include<stdio.h>
+struct st
+{
+	int sex;
+	char name[10];
+	int flag;
+}; struct st stu[51];
+int main()
+{
+	int n = 0;
+	scanf("%d", &n);
+	for (int i = 0; i < n; i++)
+	{
+		scanf("%d %s", &stu[i].sex, &stu[i].name);
+		stu[i].flag = 0;
+	}
+	int t = n / 2;
+	for (int k = 0; k < t; k++)
+	{
+		for (int y = n-1; y >= t; y--)
+		{
+			if (stu[k].sex == 0)
+			{
+				if (stu[y].sex == 1&&stu[y].flag==0)
+				{
+					printf("%s %s\n", stu[k].name, stu[y].name);
+					stu[y].flag = 1;
+					break;
+				}
+			}
+			else
+			{
+				if (stu[y].sex == 0 && stu[y].flag == 0)
+				{
+					printf("%s %s\n", stu[k].name, stu[y].name);
+					stu[y].flag = 1;
+					break;
+				}
+			}
+		}
+	}
+}
