@@ -1,0 +1,30 @@
+#include<stdio.h>
+int main()
+{
+	int m ,n;
+	scanf("%d %d", &m, &n);
+	int i = 0;
+	int t = 0;
+	int sum = 0;
+	for (t = m; t <= n; t++)
+	{
+		i++;
+		if (i % 5 == 0)
+		{
+			if (t == n)
+			{
+				printf("%5d", t);
+			}
+			else
+			{
+				printf("%5d\n", t);
+			}
+		}
+		else
+		{
+			printf("%5d", t);
+		}
+		sum += t;
+	}
+	printf("\nSum = %d", sum);
+}
