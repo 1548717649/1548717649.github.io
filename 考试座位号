@@ -1,0 +1,39 @@
+#include<stdio.h>
+struct stu
+{
+	long long int num;
+	int shi;
+	int kao;
+};struct stu arr[1000];
+int main()
+{
+	int n = 0;
+	scanf("%d", &n);
+	int i = 0;
+	while (n != 0)
+	{
+		n--;
+		scanf("%lld %d %d", &arr[i].num, &arr[i].shi, &arr[i].kao);
+		i++;
+	}
+	int m = 0;
+	scanf("%d", &m);
+	int brr[1000];
+	int k = 0;
+	while (m != 0)
+	{
+		scanf("%d", &brr[k]);
+		m--;
+		k++;
+	}
+	for (int u=0; u <k; u++)
+	{
+		for (int o=i; o>= 0; o--)
+		{
+			if (brr[u] == arr[o].shi)
+			{
+				printf("%lld %d\n", arr[o].num, arr[o].kao);
+			}
+		}
+	}
+}
