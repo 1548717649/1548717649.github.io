@@ -1,0 +1,104 @@
+//大笨钟
+#include<stdio.h>
+int main()
+{
+	int hour, min;
+	int times=0;
+	scanf("%d:%d", &hour, &min);
+	if (hour < 12)
+	{
+		if (min < 10 && hour < 10)
+		{
+			printf("Only 0%d:0%d.  Too early to Dang.", hour, min);
+		}
+		else if (min < 10 && hour>10)
+		{
+			printf("Only %d:0%d.  Too early to Dang.", hour, min);
+		}
+		else if (min >= 10 && hour < 10)
+		{
+			printf("Only 0%d:%d.  Too early to Dang.", hour, min);
+		}
+		else if (min >= 10 && hour > 10)
+		{
+			printf("Only %d:%d.  Too early to Dang.", hour, min);
+		}
+	}
+	else
+	{
+		if (hour != 12)
+		{
+			if (min > 0)
+			{
+				times = hour - 11;
+			}
+			else
+			{
+				times = hour - 12;
+			}
+		}
+		else
+		{
+			if (min > 0)
+			{
+				printf("Dang");
+			}
+			else
+			{
+				printf("Only %d:0%d.  Too early to Dang.", hour, min);
+			}
+		}
+		for (int i = 1; i <= times; i++)
+		{
+			printf("Dang");
+		}
+	}
+}
+//谁先倒
+#include<stdio.h>
+struct jia
+{
+	int han;
+	int hua;
+}; struct jia jia[101];
+struct yi
+{
+	int han;
+	int hua;
+}; struct yi yi[101];
+int main()
+{
+	int n,t=0;
+	int j, y;
+	int js=0, ys=0;
+	scanf("%d %d", &j, &y);
+	scanf("%d", &n);
+	while (n != 0)
+	{
+		n--;
+		t++;
+		scanf("%d %d %d %d", &jia[t].han, &jia[t].hua, &yi[t].han, &yi[t].hua);
+		int sum = jia[t].han + yi[t].han;
+		if (jia[t].hua == sum&&(yi[t].hua!=sum))
+		{
+			js++;
+		}
+		if (yi[t].hua == sum&&(jia[t].hua!=sum))
+		{
+			ys++;
+		}
+			if (js == j+1)
+		{
+			printf("A\n");
+			printf("%d", ys);
+			break;
+		}
+		if (ys == y+1)
+		{
+			printf("B\n");
+			printf("%d", js);
+			break;
+		}
+	
+	}
+}
