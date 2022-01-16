@@ -1,0 +1,77 @@
+//查验身份证
+#include<stdio.h>
+typedef struct{
+	char a[19];
+}S;
+int main(){
+	int flag =1;
+	int Q[]={7,9,10,5,8,4,2,1,6,3,7,9,10,5,8,4,2};
+	char M[11]={'1','0','X','9','8','7','6','5','4','3','2'};
+	int n;
+	scanf("%d",&n);
+	S s[n];
+	for(int i=0;i<n;i++){
+		int flag1=0;
+		scanf("%s",&s[i].a);
+		int sum=0;
+		for(int j=0;j<17;j++){
+			int t=s[i].a[j]-'0'; 
+			if(t>9 || t<0){
+				flag = 0;
+				//printf("%s",s[i].a);
+				flag1=1;
+				break;
+			}
+			sum+=(Q[j]*t);
+		}
+		int z=sum%11; 
+		if(s[i].a[17]!=M[z]|| flag1==1){
+		    if(M[z]==10&&s[i].a[17]=='X'){
+		    	printf("");	
+		    }else{
+				flag=0;
+				printf("%s\n",s[i].a);
+			}
+		}
+		
+	} 	
+	if(flag){
+		printf("All passed");
+	}
+	
+	return 0;
+}
+//到底有多二
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+	char s[52];
+	float m = 0;
+	scanf("%s", s);
+	float o = strlen(s);
+	for (int i = 0; i < o; i++)
+	{
+		if (s[i] == '2')
+		{
+			m++;
+		}
+	}
+	float sum;
+	int u = strlen(s)-1;
+	int y = s[u];
+	if (s[0] == '-')
+	{
+		sum = m / (o - 1);
+		sum *= 1.5;
+	}
+	else
+	{
+		sum = m / o ;
+	}
+	if (y % 2 == 0)
+	{
+		sum *= 2;
+	}
+	printf("%.2f%%",sum*100);
+}
