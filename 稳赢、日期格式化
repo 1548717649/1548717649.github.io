@@ -1,0 +1,71 @@
+//稳赢
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+	int n = 0;
+	scanf("%d", &n);
+	char zhao[10];
+	int a = 0;
+	while (scanf("%s",&zhao))
+	{
+		a++;
+		if (strcmp(zhao, "End") == 0)
+		{
+			break;
+		}
+		if (n == 0)
+		{
+			printf("%s\n", zhao);
+		}
+		else
+		{
+			if (n != 0 && a % (n + 1) == 0)
+			{
+				printf("%s\n", zhao);
+			}
+			else if (strcmp(zhao,"ChuiZi")==0)
+			{
+				printf("Bu\n");
+			}
+			else if (strcmp(zhao, "Bu") == 0)
+			{
+				printf("JianDao\n");
+			}
+			else if (strcmp(zhao, "JianDao") == 0)
+			{
+				printf("ChuiZi\n");
+			}
+		}
+	}
+	return 0;
+}
+//日期格式化
+#include<stdio.h>
+int main()
+{
+	int nian,ri, yue;
+	scanf("%d-%d-%d", &yue, &ri, &nian);
+	if (yue < 10)
+	{
+		if (ri < 10)
+		{
+			printf("%d-0%d-0%d", nian, yue, ri);
+		}
+		else
+		{
+			printf("%d-0%d-%d", nian, yue, ri);
+		}
+	}
+	else
+	{
+		if (ri < 10)
+		{
+			printf("%d-%d-0%d", nian, yue, ri);
+		}
+		else
+		{
+			printf("%d-%d-%d", nian, yue, ri);
+		}
+	}
+}
