@@ -1,0 +1,57 @@
+#include<stdio.h>
+#include<string.h>
+#define N 40000  
+
+int main(){
+	int n;  
+	char c;  
+	scanf("%d %c ",&n,&c);
+	char a[N];
+	gets(a);
+	int len=strlen(a);
+	if(len<=n){
+		for(int i=0;i<n-len;i++){
+			printf("%c",c);
+		}
+		printf("%s",a);
+	}else{
+		for(int i=len-n;i<len;i++) {
+			printf("%c",a[i]);
+		}
+	}	
+	return 0;
+} 
+//点赞
+#include<stdio.h>
+int main()
+{
+	int n;
+	int arr[1001] = { 0 };
+	scanf("%d", &n);
+	int h = 0, com = 0, index = 0;
+	while (n != 0)
+	{
+		n--;
+		int m;
+		int a;
+		scanf("%d", &m);
+		while (m != 0)
+		{
+			m--;
+			scanf("%d", &a);
+			arr[a]++;
+		}
+	}
+	for (int i = 0; i < 1001; i++)
+	{
+		if (arr[i] != 0)
+		{
+			if (com <= arr[i])
+			{
+				index = i;
+				com = arr[i];
+			}
+		}
+	}
+	printf("%d %d", index, com);
+}
