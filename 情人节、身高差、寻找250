@@ -1,0 +1,68 @@
+//情人节
+#include<stdio.h>
+#include<string.h>
+struct peo
+{
+	char name[11];
+}; struct peo peo[1001];
+int main()
+{
+	int i;
+	for ( i = 0; i < 1001; i++)
+	{
+		scanf("%s", &peo[i].name);
+		if (strcmp(peo[i].name,".")==0)
+		{
+			break;
+		}
+	}
+	if (i < 14 && i >= 2)
+	{
+		printf("%s is the only one for you...", peo[1].name);
+	}
+	else if (i < 2)
+	{
+		printf("Momo... No one is for you ...");
+	}
+	else if(i>=14)
+	{
+		printf("%s and %s are inviting you to dinner...", peo[1].name,peo[13].name);
+	}
+}
+//身高差
+#include<stdio.h>
+int main()
+{
+    int N;
+    scanf("%d",&N);
+    float x,y;
+    char c;
+    while(N--)
+    {
+        getchar();
+        scanf("%c%f",&c,&x);
+        if(c=='M')
+            printf("%.2f\n",x/1.09);
+        if(c=='F')
+            printf("%.2f\n",x*1.09);
+    }
+    return 0;
+}
+//寻找250
+#include<stdio.h>
+int main()
+{
+	int n = 0;
+	int num=0;
+	int a = 0;
+	while (n >= 0)
+	{
+		scanf("%d", &num);
+		a++;
+		if (num == 250)
+		{
+			printf("%d", a);
+			break;
+		}
+	}
+}
