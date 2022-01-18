@@ -1,0 +1,77 @@
+//装睡
+#include<stdio.h>
+int main()
+{
+	char name[20];
+	int breath;
+	int pause;
+	int n = 0;
+	scanf("%d", &n);
+	while (n != 0)
+	{
+		n--;
+		scanf("%s %d %d", &name, &breath, &pause);
+		if ((breath < 15 || breath>20) || (pause < 50 || pause>70))
+		{
+			printf("%s\n", name);
+			continue;
+		}
+		else
+		{
+			continue;
+		}
+	}
+}
+//整除光棍
+#include<stdio.h>
+int main()
+{
+	int x = 0, s = 0, n = 0;
+	scanf("%d", &x);
+	long long int i = 1;
+	while(1)
+	{
+		n++;
+		if (i % x == 0)
+		{
+			break;
+		}
+		i = i * 10 + 1;
+	}
+	printf("%lld %d", i/x, n);
+	return 0;
+}
+//到底是不是太胖了
+#include<stdio.h>
+#include<math.h>
+float wei(int high)
+{
+	float weigh;
+	weigh = (high - 100) * 0.9 * 2;
+	return weigh;
+}
+int main()
+{
+	int n=0;
+	scanf("%d", &n);
+	while (n != 0)
+	{
+		n--;
+		float weigh = 0;
+		int high = 0;
+		scanf("%d %f", &high, &weigh);
+		float m = wei(high);
+		if (fabs(weigh-m)<m*0.1)
+		{
+			printf("You are wan mei!\n");
+		}
+		else if(weigh-m<0&&weigh-m<=m*0.1)
+		{
+			printf("You are tai shou le!\n");
+		}
+		else
+		{
+			printf("You are tai pang le!\n");
+		}
+	}
+}
