@@ -1,0 +1,110 @@
+//谁是赢家
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+	int a, b;
+	scanf("%d %d", &a, &b);
+	int p1, p2, p3;
+	scanf("%d %d %d", &p1, &p2, &p3);
+	int pa=0, pb=0;
+	if (p1 == 1)
+	{
+		pb++;
+	}
+	else
+	{
+		pa++;
+	}
+	if (p2 == 1)
+	{
+		pb++;
+	}
+	else
+	{
+		pa++;
+	}
+	if (p3 == 1)
+	{
+		pb++;
+	}
+	else
+	{
+		pa++;
+	}
+	if (pa == 3 || pb == 3)
+	{
+		if (p1 == 1)
+		{
+			printf("The winner is b: %d + 3",b);
+		}
+		else
+		{
+			printf("The winner is a: %d + 3",a);
+		}
+	}
+	else
+	{
+		if (a > b)
+		{
+			printf("The winner is a: %d + %d", a, pa);
+		}
+		else if (b > a)
+		{
+			printf("The winner is b: %d + %d", b,pb);
+		}
+	}
+}
+//猜数字
+#include<stdio.h>
+#include<math.h>
+struct guess
+{
+	char name[10];
+	int num;
+}; struct guess gues[10001];
+int main()
+{
+	int n=0;
+	scanf("%d", &n);
+	int i = 0;
+	int sum = 0;
+	int ave=0;
+	while (n != 0)
+	{
+		n--;
+		scanf("%s %d", &gues[i].name, &gues[i].num);
+		sum +=  gues[i].num;
+		i++;
+	}
+	ave = sum / (2*i);
+	int cha=abs(gues[0].num-ave);
+	int index=0;
+	for (int o=1; o < i; o++)
+	{
+		if (cha > abs(gues[o].num - ave))
+		{
+			cha = abs(gues[o].num - ave);
+			index = o;
+		}
+	}
+	printf("%d %s", ave, gues[index].name);
+}
+//倒数第n个字符串
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+	int L,N,y;
+	int i,x;
+	scanf("%d",&L);
+	scanf("%d",&N);
+	N=N-1; 
+	for(i=1;i<=L;i++)
+    {
+		y=N/(pow(26,L-i));
+		printf("%c",'z'-y);
+		x=pow(26,L-i);
+		N=N%x;
+	}
+} 
