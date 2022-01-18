@@ -1,0 +1,100 @@
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+	int n = 0;
+	scanf("%d\n", &n);
+	char gushi[1000];
+	while (n != 0)
+	{
+		n--;
+		gets(gushi);
+		int a = strlen(gushi);
+		int index = 0;
+		int iindex = 0;
+		int it = 0;
+		for (int i = 0; i < a; i++)
+		{
+			if (gushi[i] == ',')
+			{
+				index = i;
+				continue;
+			}
+			if (gushi[i] == '.')
+			{
+				iindex = i;
+				break;
+			}
+		}
+		int kong = 0;
+		for (int u = a - 1; u >= 0; u--)
+		{
+			if (gushi[u] == ' ')
+			{
+				kong++;
+			}
+			if (kong == 3)
+			{
+				it = u;
+				break;
+			}
+		}
+		if (gushi[index - 1] == 'g' && gushi[index - 2] == 'n' && gushi[index - 3] == 'o' && gushi[iindex - 1] == 'g' && gushi[iindex - 2] == 'n' && gushi[iindex - 3] == 'o')
+		{
+			for (int h = 0; h <= it; h++)
+			{
+				printf("%c", gushi[h]);
+			}
+			printf("qiao ben zhong.\n");
+		}
+		else
+		{
+			printf("Skipped\n");
+		}
+	}
+}
+//心理阴影面积
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+int main()
+{
+	int x=0, y=0;
+	scanf("%d %d", &x, &y);
+	int c = 5000 - (((100 - y) * (100 - x)) / 2 + (x * y) / 2)-((100-x)*y);
+	printf("%d", c);
+}
+//幸运彩票
+#include<stdio.h>
+int swap(int a)
+{
+	return a - 48;
+}
+int main()
+{
+	char cai[7];
+	int n;
+	scanf("%d", &n);
+	while (n != 0)
+	{
+		n--;
+		scanf("%s", &cai);
+		int q = 0, h = 0;
+		for (int i = 0; i < 3; i++)
+		{
+			q += swap((int)cai[i]);
+		}
+		for (int k = 3; k < 6; k++)
+		{
+			h += swap((int)cai[k]);
+		}
+		if (h == q)
+		{
+			printf("You are lucky!\n");
+		}
+		else
+		{
+			printf("Wish you good luck.\n");
+		}
+	}
+}
