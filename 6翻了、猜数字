@@ -1,0 +1,99 @@
+//6翻了
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+	char arr[100000];
+	gets(arr);
+	int a = strlen(arr);
+	int index = 0, iindex = 0;
+	for (int i = 0; i < a; i++)
+	{
+
+		if (arr[i] == ' '||arr[0]=='6')
+		{
+			if (arr[0] == '6')
+			{
+				index = -1;
+			}
+			else
+			{
+				index = i;
+			}
+			if (index != 0)
+			{
+				for (int k = index + 1; k <= a; k++)
+				{
+					if (arr[k] == ' ' || arr[k] == '\0')
+					{
+						iindex = k;
+						break;
+					}
+				}
+			}
+			if (arr[index + 1] == '6')
+			{
+				if (index != -1)
+				{
+					printf(" ");
+				}
+				if (iindex - index > 4 && iindex - index <= 10)
+				{
+					printf("9");
+				}
+				else if (iindex - index > 10)
+				{
+					printf("27");
+				}
+				else if (iindex - index <= 4)
+				{
+					for (int r = index; r < iindex; r++)
+					{
+						printf("%c", arr[r]);
+					}
+				}
+				i = iindex;
+				index = iindex = 0;
+			}
+		}
+		if (arr[i] != '6')
+		{
+			printf("%c", arr[i]);
+		}
+	}
+}
+//猜数字
+#include<stdio.h>
+#include<math.h>
+struct guess
+{
+	char name[10];
+	int num;
+}; struct guess gues[10001];
+int main()
+{
+	int n=0;
+	scanf("%d", &n);
+	int i = 0;
+	int sum = 0;
+	int ave=0;
+	while (n != 0)
+	{
+		n--;
+		scanf("%s %d", &gues[i].name, &gues[i].num);
+		sum +=  gues[i].num;
+		i++;
+	}
+	ave = sum / (2*i);
+	int cha=abs(gues[0].num-ave);
+	int index=0;
+	for (int o=1; o < i; o++)
+	{
+		if (cha > abs(gues[o].num - ave))
+		{
+			cha = abs(gues[o].num - ave);
+			index = o;
+		}
+	}
+	printf("%d %s", ave, gues[index].name);
+}
