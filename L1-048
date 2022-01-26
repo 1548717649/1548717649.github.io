@@ -1,0 +1,37 @@
+#include<stdio.h>
+#include<math.h>
+#include<string.h>
+#include<ctype.h>
+int main(){
+	int a,b,c,d,h[100][100],l[100][100],o[100][100],m,i,j;
+	scanf("%d %d",&a,&b);
+	memset(o,0,sizeof(o));
+	for(i=0;i<a;i++){
+		for(j=0;j<b;j++){
+			scanf("%d",&h[i][j]);
+		}
+	}
+	scanf("%d %d",&c,&d);
+	for(i=0;i<c;i++){
+		for(j=0;j<d;j++){
+			scanf("%d",&l[i][j]);
+		}
+	}
+	if(b!=c)
+		printf("Error: %d != %d\n",b,c);
+	else{
+		printf("%d %d\n",a,d);
+		for(i=0;i<a;i++){
+			for(j=0;j<d;j++){
+				for(m=0;m<b;m++)
+				o[i][j]+=h[i][m]*l[m][j];
+				printf("%d",o[i][j]);
+				if(j<d-1)
+				 	printf(" ");
+				else
+					printf("\n");
+			}
+		}
+	}
+	return 0;
+}
