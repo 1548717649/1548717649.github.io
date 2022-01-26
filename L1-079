@@ -1,0 +1,33 @@
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+	int n = 0, little = 0, big = 0;
+	scanf("%d", &n);
+	int arr[20000];
+	int min = 100000, max = 0;
+	int tmax=0, tmin=0;
+	for (int i = 0; i < n; i++)
+	{
+		scanf("%d", &arr[i]);
+		if (arr[i] > max)
+		{
+			max = arr[i];
+			tmax = 0;
+		}
+		if (arr[i] == max)
+		{
+			tmax++;
+		}
+		if (arr[i] < min)
+		{
+			min = arr[i];
+			tmin = 0;
+		}
+		if (arr[i] == min)
+		{
+			tmin++;
+		}
+	}
+	printf("%d %d\n%d %d", min, tmin, max, tmax);
+}
