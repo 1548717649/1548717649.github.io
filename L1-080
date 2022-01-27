@@ -1,0 +1,28 @@
+#include<stdio.h>
+int main()
+{
+    int a,b,n,i=2,j=3;
+    scanf("%d %d %d",&a,&b,&n);
+    long long s[n+1];
+    s[1]=a,s[2]=b;
+    for(;;j++,i++)
+    {
+        s[j]=s[i]*s[i-1];
+        if(s[j]>=10)
+        {
+            long long num=s[j],t=0,a[1000],c;
+            for(c=num;num>0;c=num,t++)
+            {
+                a[t]=c%10;
+                num/=10;
+            }
+            c=t-1;
+            for(;c>=0;c--,j++) 
+                s[j]=a[c];
+            j--;
+        }
+        if(j>=n) break;
+    }
+    printf("%lld",s[1]);
+    for(i=2;i<=n;i++) printf(" %lld",s[i]);
+}
