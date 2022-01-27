@@ -1,0 +1,38 @@
+//吃火锅
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+	char arr[1000];
+	int n = 0;
+	int sum = 0;
+	int index=0;
+	while (1)
+	{
+		gets(arr);
+		if (strcmp(".",arr)==0)
+		{
+			break;
+		}
+		n++;
+		char* k = strstr(arr, "chi1 huo3 guo1");
+		if (k != NULL)
+		{
+			if (index == 0)
+			{
+				index = n;
+			}
+			sum++;
+		}
+	}
+	printf("%d\n", n);
+	if ( sum == 0)
+	{
+		printf("-_-#");
+	}
+	else
+	{
+		printf("%d %d", index, sum);
+	}
+	return 0;
+}
