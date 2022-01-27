@@ -1,0 +1,33 @@
+#include<stdio.h>
+int swap(int a)
+{
+	return a - 48;
+}
+int main()
+{
+	char cai[7];
+	int n;
+	scanf("%d", &n);
+	while (n != 0)
+	{
+		n--;
+		scanf("%s", &cai);
+		int q = 0, h = 0;
+		for (int i = 0; i < 3; i++)
+		{
+			q += swap((int)cai[i]);
+		}
+		for (int k = 3; k < 6; k++)
+		{
+			h += swap((int)cai[k]);
+		}
+		if (h == q)
+		{
+			printf("You are lucky!\n");
+		}
+		else
+		{
+			printf("Wish you good luck.\n");
+		}
+	}
+}
