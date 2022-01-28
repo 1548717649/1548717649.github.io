@@ -1,0 +1,26 @@
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+	int arr[26];
+	for (int i = 1; i <= 24; i++)
+	{
+		scanf("%d", &arr[i]);
+	}
+	int ser = 0;
+	while (scanf("%d", &ser) != EOF)
+	{
+		if (ser<0||ser>23)
+		{
+			break;
+		}
+		if (arr[ser+1] > 50)
+		{
+			printf("%d Yes\n", arr[ser+1]);
+		}
+		else
+		{
+			printf("%d No\n", arr[ser+1]);
+		}
+	}
+}
