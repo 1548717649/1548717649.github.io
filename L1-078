@@ -1,0 +1,51 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+int main()
+{
+	int n, ji;
+	scanf("%d %d", &n, &ji);
+	char arr[1000];
+	n = n + 1;
+//在这里之所以要n+1是因为下面的gets函数会先将/n给输入字符串，所以此行作废
+	int zhen = 0;
+	while (n != 0)
+	{
+		n--;
+		gets(arr);
+		int a = strlen(arr);
+		int flag = 0;
+//a记录字符串长度，flag记录是否出现了easy或者qiandao
+		for (int i = 0; i <= a - 4; i++)
+		{
+			if (arr[i] == 'e' && arr[i + 1] == 'a' && arr[i + 2] == 's' && arr[i + 3] == 'y')
+			{
+				flag = 1;
+				break;
+			}
+		}
+		for (int i = 0; i <= a - 7; i++)
+		{
+			if (arr[i] == 'q' && arr[i + 1] == 'i' && arr[i + 2] == 'a' && arr[i + 3] == 'n' && arr[i + 4] == 'd' && arr[i + 5] == 'a' && arr[i + 6] == 'o')
+			{
+				flag = 1;
+				break;
+			}
+		}
+//用以上两个循环来排查easy和qiandao，如果a小于4，则根本无法进入循环
+		if (flag == 0&&a!=0)
+		{
+			zhen++;
+		}
+		if (ji == zhen - 1)
+		{
+			printf("%s", arr);
+			break;
+		}
+	}
+	if (ji >= zhen)
+	{
+		printf("Wo AK le");
+	}
+	return 0;
+}
