@@ -1,0 +1,67 @@
+#include<stdio.h>
+#include<string.h>
+void com(float* arr,float*brr,int n)
+{
+	float t = 0;
+	float a = 0;
+	for (int i = 0; i < n-1; i++)
+	{
+		for (int m = 0; m < n-i-1; m++)
+		{
+			if (brr[m] < brr[m+1])
+			{
+				t = brr[m];
+				brr[m] = brr[m+1];
+				brr[m+1] = t;
+				a = arr[m];
+				arr[m] = arr[m+1];
+				arr[m+1] = a;
+			}
+		}
+	}
+}
+//定义该函数的目的是对价格进行比较，同时对arr中的顺序也进行替换
+//以保证arr中对应的储存量能够和brr中的单价下标一一对应
+//该函数中不比较arr中储存量的大小，只比较brr中单价的大小
+int main()
+{
+	int n, xu;
+	scanf("%d %d", &n, &xu);
+	float arr[1000] = { 0 };
+	float brr[1000] = { 0 };
+//以arr存储储存量，brr存储总售价
+	for (int i = 0; i < n; i++)
+	{
+		scanf("%f", &arr[i]);
+	}
+	for (int m = 0; m < n; m++)
+	{
+		scanf("%f", &brr[m]);
+	}
+	for (int i = 0; i < n; i++)
+	{
+		brr[i] = brr[i] / arr[i];
+	}
+//将brr中存储的总售价，除以arr中存储的吨数，算出每吨的售价
+//用该数据替代brr中原本存储的总售价
+	com(arr, brr, n);
+	float sum = 0;
+	int i = 0;
+	while (i < n)
+	{
+		if (arr[i] >= xu)
+		{
+			sum += xu * brr[i];
+			break;
+		}
+		else
+		{
+			sum += arr[i] * brr[i];
+			xu -= arr[i];
+			i++;
+		}
+	}
+//该循环中i为下标，xu控制着整个循环的进行
+//xu是需求量，当需求量没能被完全满足的时候还要继续进行
+	printf("%.2f", sum);
+}
