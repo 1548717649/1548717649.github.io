@@ -1,0 +1,18 @@
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+	int n;
+	float M,it;
+	scanf("%d %f", &n, &M);
+	while (n != 0)
+	{
+		n--;
+		scanf("%f", &it);
+		if (it < M)
+		{
+			printf("On Sale! %.1f\n", it);
+		}
+	}
+	return 0;
+}
