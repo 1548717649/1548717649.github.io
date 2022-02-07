@@ -1,0 +1,27 @@
+#include<stdio.h>
+#include<math.h>
+#include<string.h>
+
+int main()
+{
+	int n, m;
+	scanf("%d %d", &n, &m);
+	int k = pow(2, n);
+	char arr[35];
+	int index, h;
+	for (int i = 0; i < m; i++)
+	{
+		index = 1;
+		h = k;
+		scanf("%s", &arr);
+		for (int j = 0; j < strlen(arr); j++) 
+		{
+			if (arr[j] == 'n')
+			{
+				index += (h / 2);
+			}
+			h /= 2;
+		}
+		printf("%d\n", index);
+	}
+}
