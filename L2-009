@@ -1,0 +1,65 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct people{
+    int bian;
+    int qian;
+    int ge;
+}peo[10003];
+
+void sort(struct people peo[],int n);
+int main(){
+    int n,i,j,Hnumber,sno,money,count;
+    scanf("%d",&n);
+    for(i=1;i<=n;i++){
+        peo[i].qian = 0;
+        peo[i].ge = 0;
+    }
+    for(i=1;i<=n;i++){
+        scanf("%d",&Hnumber);
+        count = 0;
+        for(j=0;j<Hnumber;j++){
+            scanf("%d%d",&sno,&money);
+            peo[sno].qian += money;
+            peo[sno].bian = sno;
+            peo[sno].ge++;
+            count += money;
+        }
+        peo[i].qian -= count;
+        peo[i].bian = i;
+    }
+    sort(peo,n);
+    for(i=1;i<=n;i++){
+        printf("%d %.2f\n",peo[i].bian,peo[i].qian*1.00/100);
+    }
+
+}
+void sort(struct people peo[],int n)
+{
+    int i,j;
+    for(i=1;i<=n;i++)
+    {
+        for(j=1;j<=n-i;j++)
+        {
+            if(peo[j].qian<peo[j+1].qian)
+            {
+                peo[10003] = peo[j];
+                peo[j] = peo[j+1];
+                peo[j+1] = peo[10003];
+            }
+         }
+    }
+    for(i=1;i<=n;i++)
+    {
+        if(peo[i].qian==peo[i+1].qian)
+        {
+            if(peo[i].ge<peo[i+1].ge)
+            {
+                peo[10003] = peo[i];
+                peo[i] = peo[i+1];
+                peo[i+1] = peo[10003];
+            }
+        }
+    }
+    return;
+}
